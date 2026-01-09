@@ -1774,7 +1774,7 @@
         "content": "Python3",
         "description": "Python is a versatile programming language used for web development, data analysis, artificial intelligence, and more.",
         "link": "https://www.python.org/",
-        "winget": "Python.Python.3.13"
+        "winget": "Python.Python.3.14"
     },
     "qbittorrent": {
         "category": "Utilities",
@@ -2186,7 +2186,7 @@
     },
     "thorium": {
         "category": "Browsers",
-        "choco": "na",
+        "choco": "thorium",
         "content": "Thorium Browser AVX2",
         "description": "Browser built for speed over vanilla chromium. It is built with AVX2 optimizations and is the fastest browser on the market.",
         "link": "https://thorium.rocks/",
