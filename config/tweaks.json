@@ -71,7 +71,7 @@
       # Sometimes if you dont stop Widgets Process for removal to work
       Stop-Procces -Name Widgets
       Get-AppxPackage Microsoft.WidgetsPlatformRuntime -AllUsers | Remove-AppxPackage -AllUsers
-      
+
       Invoke-WinUtilExplorerUpdate -action \"restart\"
       Write-Host \"Removed widgets\"
       "
@@ -784,6 +784,11 @@
         "OriginalType": "Manual"
       },
       {
+        "Name": "WSAIFabricSvc",
+        "StartupType": "Manual",
+        "OriginalType": "Automatic"
+      },
+      {
         "Name": "WSearch",
         "StartupType": "AutomaticDelayedStart",
         "OriginalType": "Automatic"
@@ -1417,7 +1422,7 @@
 
       # Disable (Windows Error Reporting Manager) Service
       Set-Service -Name wermgr -StartupType Disabled
-      
+
       $Memory = (Get-CimInstance Win32_PhysicalMemory | Measure-Object Capacity -Sum).Sum / 1KB
       Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\" -Name SvcHostSplitThresholdInKB -Value $Memory
 
@@ -1494,12 +1499,18 @@
 
       # Grant back permission to accses OneDrive folder
       icacls $Env:OneDrive /grant \"Administrators:(D,DC)\"
+
+      # Disable OneSyncSvc
+      Set-Service -Name OneSyncSvc -StartupType Disabled
       "
     ],
     "UndoScript": [
       "
       Write-Host \"Installing OneDrive\"
       winget install Microsoft.Onedrive --source winget
+
+      # Enabled OneSyncSvc
+      Set-Service -Name OneSyncSvc -StartupType Enabled
       "
     ],
     "link": "https://winutil.christitus.com/dev/tweaks/z--advanced-tweaks---caution/removeonedrive"
@@ -1642,9 +1653,24 @@
     ],
     "link": "https://winutil.christitus.com/dev/tweaks/z--advanced-tweaks---caution/display"
   },
+  "WPFTweaksXboxRemoval": {
+    "Content": "Remove Xbox & Gaming Components",
+    "Description": "Removes Xbox services, the Xbox app, Game Bar, and related authentication components.",
+    "category": "z__Advanced Tweaks - CAUTION",
+    "panel": "1",
+    "Order": "a028_",
+    "appx": [
+      "Microsoft.XboxIdentityProvider",
+      "Microsoft.XboxSpeechToTextOverlay",
+      "Microsoft.GamingApp",
+      "Microsoft.Xbox.TCUI",
+      "Microsoft.XboxGamingOverlay"
+    ],
+    "link": "https://winutil.christitus.com/dev/tweaks/z--advanced-tweaks---caution/xboxremoval"
+  },
   "WPFTweaksDeBloat": {
     "Content": "Remove ALL MS Store Apps - NOT RECOMMENDED",
-    "Description": "USE WITH CAUTION!!! This will remove ALL Microsoft store apps other than the essentials onces.",
+    "Description": "USE WITH CAUTION!!! This will remove ALL Microsoft store apps.",
     "category": "z__Advanced Tweaks - CAUTION",
     "panel": "1",
     "Order": "a028_",
@@ -1659,8 +1685,10 @@
       "Microsoft.BingFoodAndDrink",
       "Microsoft.BingHealthAndFitness",
       "Microsoft.BingTravel",
-      "Microsoft.MinecraftUWP",
-      "Microsoft.GamingServices",
+      "Clipchamp.Clipchamp",
+      "Microsoft.Todos",
+      "MicrosoftCorporationII.QuickAssist",
+      "Microsoft.MicrosoftStickyNotes",
       "Microsoft.GetHelp",
       "Microsoft.GetStarted",
       "Microsoft.Messaging",
@@ -2057,51 +2085,6 @@
       "
     ],
     "link": "https://winutil.christitus.com/dev/tweaks/essential-tweaks/deletetempfiles"
-  },
-  "WPFTweaksDVR": {
-    "Content": "Disable GameDVR",
-    "Description": "GameDVR is a Windows App that is a dependency for some Store Games. I've never met someone that likes it, but it's there for the XBOX crowd.",
-    "category": "z__Advanced Tweaks - CAUTION",
-    "panel": "1",
-    "Order": "a005_",
-    "registry": [
-      {
-        "Path": "HKCU:\\System\\GameConfigStore",
-        "Name": "GameDVR_FSEBehavior",
-        "Value": "2",
-        "OriginalValue": "1",
-        "Type": "DWord"
-      },
-      {
-        "Path": "HKCU:\\System\\GameConfigStore",
-        "Name": "GameDVR_Enabled",
-        "Value": "0",
-        "OriginalValue": "1",
-        "Type": "DWord"
-      },
-      {
-        "Path": "HKCU:\\System\\GameConfigStore",
-        "Name": "GameDVR_HonorUserFSEBehaviorMode",
-        "Value": "1",
-        "OriginalValue": "0",
-        "Type": "DWord"
-      },
-      {
-        "Path": "HKCU:\\System\\GameConfigStore",
-        "Name": "GameDVR_EFSEFeatureFlags",
-        "Value": "0",
-        "OriginalValue": "1",
-        "Type": "DWord"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR",
-        "Name": "AllowGameDVR",
-        "Value": "0",
-        "OriginalValue": "<RemoveEntry>",
-        "Type": "DWord"
-      }
-    ],
-    "link": "https://winutil.christitus.com/dev/tweaks/essential-tweaks/gamedvr"
   },
   "WPFTweaksIPv46": {
     "Content": "Prefer IPv4 over IPv6",
