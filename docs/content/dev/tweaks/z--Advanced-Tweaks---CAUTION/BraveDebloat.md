@@ -2,7 +2,8 @@
 title: "Brave Debloat"
 description: ""
 ---
-```json {filename="config/tweaks.json",linenos=inline,linenostart=1134}
+
+```json {filename="config/tweaks.json",linenos=inline,linenostart=1126}
   "WPFTweaksBraveDebloat": {
     "Content": "Brave Debloat",
     "Description": "Disables various annoyances like Brave Rewards,Leo AI,Crypto Wallet and VPN",
@@ -12,36 +13,36 @@ description: ""
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
         "Name": "BraveRewardsDisabled",
-        "Type": "DWord",
         "Value": "1",
+        "Type": "DWord",
         "OriginalValue": "<RemoveEntry>"
       },
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
         "Name": "BraveWalletDisabled",
-        "Type": "DWord",
         "Value": "1",
+        "Type": "DWord",
         "OriginalValue": "<RemoveEntry>"
       },
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
         "Name": "BraveVPNDisabled",
-        "Type": "DWord",
         "Value": "1",
+        "Type": "DWord",
         "OriginalValue": "<RemoveEntry>"
       },
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
         "Name": "BraveAIChatEnabled",
-        "Type": "DWord",
         "Value": "0",
+        "Type": "DWord",
         "OriginalValue": "<RemoveEntry>"
       },
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
         "Name": "BraveStatsPingEnabled",
-        "Type": "DWord",
         "Value": "0",
+        "Type": "DWord",
         "OriginalValue": "<RemoveEntry>"
       }
     ],

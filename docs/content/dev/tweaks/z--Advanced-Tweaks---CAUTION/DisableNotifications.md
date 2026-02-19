@@ -2,7 +2,8 @@
 title: "Disable Notification Tray/Calendar"
 description: ""
 ---
-```json {filename="config/tweaks.json",linenos=inline,linenostart=1959}
+
+```json {filename="config/tweaks.json",linenos=inline,linenostart=1950}
   "WPFTweaksDisableNotifications": {
     "Content": "Disable Notification Tray/Calendar",
     "Description": "Disables all Notifications INCLUDING Calendar",
@@ -12,15 +13,15 @@ description: ""
       {
         "Path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\Explorer",
         "Name": "DisableNotificationCenter",
-        "Type": "DWord",
         "Value": "1",
+        "Type": "DWord",
         "OriginalValue": "<RemoveEntry>"
       },
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\PushNotifications",
         "Name": "ToastEnabled",
-        "Type": "DWord",
         "Value": "0",
+        "Type": "DWord",
         "OriginalValue": "1"
       }
     ],

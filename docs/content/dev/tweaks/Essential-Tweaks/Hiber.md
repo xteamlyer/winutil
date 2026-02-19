@@ -2,6 +2,7 @@
 title: "Disable Hibernation"
 description: ""
 ---
+
 ```json {filename="config/tweaks.json",linenos=inline,linenostart=32}
   "WPFTweaksHiber": {
     "Content": "Disable Hibernation",
@@ -12,15 +13,15 @@ description: ""
       {
         "Path": "HKLM:\\System\\CurrentControlSet\\Control\\Session Manager\\Power",
         "Name": "HibernateEnabled",
-        "Type": "DWord",
         "Value": "0",
+        "Type": "DWord",
         "OriginalValue": "1"
       },
       {
         "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FlyoutMenuSettings",
         "Name": "ShowHibernateOption",
-        "Type": "DWord",
         "Value": "0",
+        "Type": "DWord",
         "OriginalValue": "1"
       }
     ],

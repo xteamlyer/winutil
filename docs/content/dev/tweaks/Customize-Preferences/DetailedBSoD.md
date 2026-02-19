@@ -2,7 +2,8 @@
 title: "Detailed BSoD"
 description: ""
 ---
-```json {filename="config/tweaks.json",linenos=inline,linenostart=2540}
+
+```json {filename="config/tweaks.json",linenos=inline,linenostart=2541}
   "WPFToggleDetailedBSoD": {
     "Content": "Detailed BSoD",
     "Description": "If Enabled then you will see a detailed Blue Screen of Death (BSOD) with more information.",
@@ -14,17 +15,17 @@ description: ""
         "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\CrashControl",
         "Name": "DisplayParameters",
         "Value": "1",
+        "Type": "DWord",
         "OriginalValue": "0",
-        "DefaultState": "false",
-        "Type": "DWord"
+        "DefaultState": "false"
       },
       {
         "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\CrashControl",
         "Name": "DisableEmoticon",
         "Value": "1",
+        "Type": "DWord",
         "OriginalValue": "0",
-        "DefaultState": "false",
-        "Type": "DWord"
+        "DefaultState": "false"
       }
     ],
 ```

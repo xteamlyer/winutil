@@ -12,9 +12,10 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
+  pull-requests: write
 
 concurrency:
   group: "pages"
@@ -42,6 +43,7 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+          persist-credentials: false
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
@@ -50,6 +52,26 @@ jobs:
         run: |
           Set-Location tools
           ./devdocs-generator.ps1
+      
+      - name: Create Pull Request 🚀
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'Update generated documentation'
+          title: 'chore: Update Generated Dev Docs'
+          body: 'Automated update of generated documentation from JSON sources'
+          branch: docs-update
+          delete-branch: true
+          labels: |
+            automated
+            documentation
+      
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+      
       - name: Install Node.js dependencies
         run: "cd docs && [[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Cache Restore

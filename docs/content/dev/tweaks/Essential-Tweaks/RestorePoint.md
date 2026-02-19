@@ -2,7 +2,8 @@
 title: "Create Restore Point"
 description: ""
 ---
-```json {filename="config/tweaks.json",linenos=inline,linenostart=1744}
+
+```json {filename="config/tweaks.json",linenos=inline,linenostart=1736}
   "WPFTweaksRestorePoint": {
     "Content": "Create Restore Point",
     "Description": "Creates a restore point at runtime in case a revert is needed from WinUtil modifications",
@@ -13,8 +14,8 @@ description: ""
       {
         "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SystemRestore",
         "Name": "SystemRestorePointCreationFrequency",
-        "Type": "DWord",
         "Value": "0",
+        "Type": "DWord",
         "OriginalValue": "1440"
       }
     ],

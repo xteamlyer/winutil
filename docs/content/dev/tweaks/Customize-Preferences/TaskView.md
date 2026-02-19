@@ -2,7 +2,8 @@
 title: "Task View Button in Taskbar"
 description: ""
 ---
-```json {filename="config/tweaks.json",linenos=inline,linenostart=2504}
+
+```json {filename="config/tweaks.json",linenos=inline,linenostart=2495}
   "WPFToggleTaskView": {
     "Content": "Task View Button in Taskbar",
     "Description": "If Enabled then Task View Button in Taskbar will be shown.",
@@ -14,9 +15,9 @@ description: ""
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
         "Name": "ShowTaskViewButton",
         "Value": "1",
+        "Type": "DWord",
         "OriginalValue": "0",
-        "DefaultState": "true",
-        "Type": "DWord"
+        "DefaultState": "true"
       }
     ],
 ```

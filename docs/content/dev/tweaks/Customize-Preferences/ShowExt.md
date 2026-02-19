@@ -2,7 +2,8 @@
 title: "Show File Extensions"
 description: ""
 ---
-```json {filename="config/tweaks.json",linenos=inline,linenostart=2458}
+
+```json {filename="config/tweaks.json",linenos=inline,linenostart=2449}
   "WPFToggleShowExt": {
     "Content": "Show File Extensions",
     "Description": "If enabled then File extensions (e.g., .txt, .jpg) are visible.",
@@ -14,9 +15,9 @@ description: ""
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
         "Name": "HideFileExt",
         "Value": "0",
+        "Type": "DWord",
         "OriginalValue": "1",
-        "DefaultState": "false",
-        "Type": "DWord"
+        "DefaultState": "false"
       }
     ],
     "InvokeScript": [
