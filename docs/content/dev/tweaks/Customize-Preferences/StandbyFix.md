@@ -1,22 +1,22 @@
 ---
-title: "Search Button in Taskbar"
+title: "Modern Standby fix"
 description: ""
 ---
 
-```json {filename="config/tweaks.json",linenos=inline,linenostart=2495}
-  "WPFToggleTaskbarSearch": {
-    "Content": "Search Button in Taskbar",
-    "Description": "If enabled, Search Button will be on the Taskbar.",
+```json {filename="config/tweaks.json",linenos=inline,linenostart=2203}
+  "WPFToggleStandbyFix": {
+    "Content": "Modern Standby fix",
+    "Description": "Disable network connection during S0 sleep. If network connectivity is turned on during S0 sleep it could cause overheating on modern laptops",
     "category": "Customize Preferences",
     "panel": "2",
     "Type": "Toggle",
     "registry": [
       {
-        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
-        "Name": "SearchboxTaskbarMode",
-        "Value": "1",
+        "Path": "HKCU:\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\f15576e8-98b7-4186-b944-eafa664402d9",
+        "Name": "ACSettingIndex",
+        "Value": "0",
         "Type": "DWord",
-        "OriginalValue": "0",
+        "OriginalValue": "<RemoveEntry>",
         "DefaultState": "true"
       }
     ],
