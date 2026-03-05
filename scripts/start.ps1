@@ -9,7 +9,8 @@
 param (
     [string]$Config,
     [switch]$Run,
-    [switch]$Noui
+    [switch]$Noui,
+    [switch]$Offline
 )
 
 if ($Config) {
@@ -27,25 +28,10 @@ if ($Noui) {
     $PARAM_NOUI = $true
 }
 
-# Load DLLs
-Add-Type -AssemblyName PresentationFramework
-Add-Type -AssemblyName System.Windows.Forms
-
-# Variable to sync between runspaces
-$sync = [Hashtable]::Synchronized(@{})
-$sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "#{replaceme}"
-$sync.configs = @{}
-$sync.Buttons = [System.Collections.Generic.List[PSObject]]::new()
-$sync.preferences = @{}
-$sync.ProcessRunning = $false
-$sync.selectedApps = [System.Collections.Generic.List[string]]::new()
-$sync.selectedTweaks = [System.Collections.Generic.List[string]]::new()
-$sync.selectedToggles = [System.Collections.Generic.List[string]]::new()
-$sync.selectedFeatures = [System.Collections.Generic.List[string]]::new()
-$sync.currentTab = "Install"
-$sync.selectedAppsStackPanel
-$sync.selectedAppsPopup
+$PARAM_OFFLINE = $false
+if ($Offline) {
+    $PARAM_OFFLINE = $true
+}
 
 
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
@@ -79,6 +65,26 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 
     break
 }
+
+# Load DLLs
+Add-Type -AssemblyName PresentationFramework
+Add-Type -AssemblyName System.Windows.Forms
+
+# Variable to sync between runspaces
+$sync = [Hashtable]::Synchronized(@{})
+$sync.PSScriptRoot = $PSScriptRoot
+$sync.version = "#{replaceme}"
+$sync.configs = @{}
+$sync.Buttons = [System.Collections.Generic.List[PSObject]]::new()
+$sync.preferences = @{}
+$sync.ProcessRunning = $false
+$sync.selectedApps = [System.Collections.Generic.List[string]]::new()
+$sync.selectedTweaks = [System.Collections.Generic.List[string]]::new()
+$sync.selectedToggles = [System.Collections.Generic.List[string]]::new()
+$sync.selectedFeatures = [System.Collections.Generic.List[string]]::new()
+$sync.currentTab = "Install"
+$sync.selectedAppsStackPanel
+$sync.selectedAppsPopup
 
 $dateTime = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
 
