@@ -260,6 +260,15 @@
         "winget": "ChidiWilliams.Buzz",
         "foss": true
     },
+    "blurautoclicker": {
+        "category": "Utilities",
+        "choco": "na",
+        "content": "BlurAutoClicker",
+        "description": "An Auto-clicker with a few advanced features and generally better performance than popular alternatives.",
+        "link": "https://blur009.vercel.app/projects/blur-autoclicker/",
+        "winget": "Blur009.BlurAutoClicker",
+        "foss": true
+    },
     "AdvancedRenamer": {
         "category": "Utilities",
         "choco": "advanced-renamer",
@@ -457,6 +466,15 @@
         "link": "https://cursor.com/",
         "winget": "Anysphere.Cursor",
         "foss": false
+    },
+    "Dangerzone": {
+        "category": "Utilities",
+        "choco": "na",
+        "winget": "FreedomofthePressFoundation.Dangerzone",
+        "description": "Take potentially dangerous PDFs, office documents, or images and convert them to a safe PDF.",
+        "content": "Dangerzone",
+        "link": "https://github.com/freedomofpress/dangerzone",
+        "foss": true
     },
     "darktable": {
         "category": "Multimedia Tools",
@@ -1231,6 +1249,14 @@
         "link": "https://inkscape.org/",
         "winget": "Inkscape.Inkscape",
         "foss": true
+    },
+    "irfanview": {
+        "category": "Multimedia Tools",
+        "choco": "irfanview",
+        "content": "IrfanView",
+        "description": "IrfanView is a lightweight, fast, and free image viewer and editor. Supports multiple formats, batch processing, and powerful plugins.",
+        "link": "https://irfanview.com/",
+        "winget": "IrfanSkiljan.IrfanView"
     },
     "itch": {
         "category": "Games",
