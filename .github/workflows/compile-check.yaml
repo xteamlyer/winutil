@@ -20,3 +20,10 @@ jobs:
       run: |
         Set-ExecutionPolicy Bypass -Scope Process -Force; ./Compile.ps1
       continue-on-error: false # Directly fail the job on error, removing the need for a separate check
+      
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        path: ./winutil.ps1
+        archive: false
+          
