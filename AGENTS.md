@@ -44,6 +44,7 @@ WinUtil is a Windows PowerShell utility with a WPF interface. The repository is 
   ```
 - Run tests:
   ```powershell
+  Import-Module Pester -RequiredVersion 5.8.0 -Force
   Invoke-Pester -Path 'pester/*.Tests.ps1' -Output Detailed
   ```
 - Run Script Analyzer with project settings when available:
@@ -182,4 +183,11 @@ Proceed without asking when:
 When the user corrects an agent approach, add or tighten one concrete rule here before ending the session. Keep this section short and prune rules that no longer matter.
 
 - Keep `winutil.ps1` generated-only: change source files, compile to verify, and never stage the generated script.
-
+- Keep WinUtil runtime logging in the existing timestamped `%LocalAppData%\winutil\logs\winutil_*.log` session file; do not create a separate root `winutil.log`.
+- Import Pester 5.8.0 before running tests so `Invoke-Pester -Output Detailed -CI` does not resolve to Windows' inbox Pester 3.4.0.
+- Keep package install/uninstall process launches simple unless explicitly requested; do not add a separate stdout/stderr process logging helper for winget or Chocolatey.
+- When the active log file is owned by `Start-Transcript`, do not call `Add-Content` against that file; write to host output so the transcript captures the line in the same log file without recording a terminating-error diagnostic.
+- Log install/uninstall package names and package-manager IDs before queuing background runspace work; do not rely on runspace host output for the package identity.
+- For Win11 Creator, start each new ISO modification in a fresh `WinUtil_Win11ISO_*` temp directory; existing-work detection is only for resuming/exporting already modified media.
+- For Script Analyzer cleanup, fix actionable source warnings first and do not globally suppress accepted convention warnings such as plural names, `ShouldProcess` on UI helpers, `$global:sync`, or compile-time cross-file false positives.
+- For DNS DHCP reset, keep the cmdlet reset and explicitly set IPv4 and IPv6 DNS source to DHCP.
